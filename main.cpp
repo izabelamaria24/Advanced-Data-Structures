@@ -10,4 +10,8 @@ int main() {
   list.insert(26);
 
   list.display();
+
+  list.search(26);
+  list.search(1);
+  list.search(101);
 }

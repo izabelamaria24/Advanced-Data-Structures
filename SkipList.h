@@ -10,15 +10,10 @@ using namespace std;
 template<typename T>
 struct Node {
     T data;
-    int level;
     map<int, shared_ptr<Node>>nextNode;
 
     Node() = default;
-    Node(int data, int level) : data(data), level(level){};
-
-    T getData() const {
-        return data;
-    }
+    explicit Node(int data) : data(data){};
 };
 
 
@@ -30,7 +25,6 @@ class SkipList : public BST<T> {
     const int maxLevel;
 
     int randomize() {
-        std::random_device rd;
         std::mt19937 gen(std::chrono::system_clock::now().time_since_epoch().count());
         std::uniform_real_distribution<double> dis(0.0, 1.0);
 
@@ -39,7 +33,6 @@ class SkipList : public BST<T> {
         while (dis(gen) < 0.5 && level < maxLevel)
             level++;
 
-        cout << level << " DEBUG" << '\n';
         return level;
     }
 
@@ -70,7 +63,7 @@ class SkipList : public BST<T> {
 
   void insert(T value) override {
     int newLevel = randomize();
-    shared_ptr<Node<T>> newNode(new Node<T>(value, newLevel));
+    shared_ptr<Node<T>> newNode(new Node<T>(value));
 
       // starting from the max level
       
@@ -100,6 +93,22 @@ class SkipList : public BST<T> {
   }
 
   void search(T value) override {
-    // TODO
+      int currentLevel = maxLevel - 1;
+      shared_ptr<Node<T>> currentNode = head;
+
+      while (currentLevel >= 0) {
+          while (currentNode->nextNode[currentLevel] != tail && currentNode->nextNode[currentLevel]->data < value) {
+              currentNode = currentNode->nextNode[currentLevel];
+          }
+
+          if (currentNode->nextNode[currentLevel] != tail && currentNode->nextNode[currentLevel]->data == value) {
+              cout << "Value " << value << " found in SkipList" << '\n';
+              return;
+          }
+
+          currentLevel--;
+      }
+
+      cout << "Value " << value << " not found in SkipList" << '\n';
   }
 };
