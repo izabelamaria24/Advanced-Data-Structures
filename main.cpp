@@ -1,6 +1,7 @@
 #include "SkipList.h"
 
 int main() {
+    // testing
 //  SkipList<int>list(5);
 //
 //  list.insert(10);

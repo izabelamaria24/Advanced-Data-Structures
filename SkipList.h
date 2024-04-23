@@ -3,23 +3,22 @@
 #include <random>
 #include <chrono>
 
-#include "BST.h"
+#include "Structure.h"
 
 using namespace std;
 
 template<typename T>
 struct Node {
     T data;
-    int level;
     map<int, shared_ptr<Node>>nextNode;
 
     Node() = default;
-    Node(int data, int level) : data(data), level(level){};
+    explicit Node(int data) : data(data){};
 };
 
 
 template<typename T>
-class SkipList : public BST<T> {
+class SkipList : public Structure<T> {
   private:
     shared_ptr<Node<T>> head;
     shared_ptr<Node<T>> tail;
@@ -64,9 +63,7 @@ class SkipList : public BST<T> {
 
   void insert(T value) override {
     int newLevel = randomize();
-    shared_ptr<Node<T>> newNode(new Node<T>(value, newLevel));
-
-      // starting from the max level
+    shared_ptr<Node<T>> newNode(new Node<T>(value));
       
       int currentLevel = maxLevel - 1;
       shared_ptr<Node<T>>currentNode = head;
