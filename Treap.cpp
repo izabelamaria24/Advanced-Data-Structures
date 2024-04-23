@@ -1,0 +1,4 @@
+
+class Treap : public BST {
+
+}
