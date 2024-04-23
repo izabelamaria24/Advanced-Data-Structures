@@ -10,10 +10,11 @@ using namespace std;
 template<typename T>
 struct Node {
     T data;
+    int level;
     map<int, shared_ptr<Node>>nextNode;
 
     Node() = default;
-    explicit Node(int data) : data(data){};
+    Node(int data, int level) : data(data), level(level){};
 };
 
 
@@ -63,7 +64,7 @@ class SkipList : public BST<T> {
 
   void insert(T value) override {
     int newLevel = randomize();
-    shared_ptr<Node<T>> newNode(new Node<T>(value));
+    shared_ptr<Node<T>> newNode(new Node<T>(value, newLevel));
 
       // starting from the max level
       
@@ -88,11 +89,38 @@ class SkipList : public BST<T> {
       }
   }
 
-  void remove(T value) override {
-    // TODO
-  }
+    void remove(T value) override {
+        int currentLevel = maxLevel - 1;
+        shared_ptr<Node<T>> currentNode = head;
 
-  void search(T value) override {
+        vector<shared_ptr<Node<T>>> prevNodes(maxLevel, nullptr);
+
+        while (currentLevel >= 0) {
+            while (currentNode->nextNode[currentLevel] != tail && currentNode->nextNode[currentLevel]->data < value) {
+                currentNode = currentNode->nextNode[currentLevel];
+            }
+
+            prevNodes[currentLevel] = currentNode;
+            currentLevel--;
+        }
+
+        if (currentNode->nextNode[0] == tail || currentNode->nextNode[0]->data != value) {
+            cout << "Value " << value << " not found in SkipList. Cannot remove." << endl;
+            return;
+        }
+
+        shared_ptr<Node<T>> nodeToRemove = currentNode->nextNode[0];
+        for (int i = 0; i < maxLevel; ++i) {
+            if (prevNodes[i] != nullptr && prevNodes[i]->nextNode[i] == nodeToRemove) {
+                prevNodes[i]->nextNode[i] = nodeToRemove->nextNode[i];
+            }
+        }
+
+        nodeToRemove->nextNode.clear();
+        cout << "Value " << value << " removed from SkipList" << endl;
+    }
+
+    void search(T value) override {
       int currentLevel = maxLevel - 1;
       shared_ptr<Node<T>> currentNode = head;
 
