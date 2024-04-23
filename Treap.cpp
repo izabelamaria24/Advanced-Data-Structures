@@ -1,4 +1,6 @@
+#include "BST.h"
 
-class Treap : public BST {
-
+template<typename T>
+class Treap : public BST<T> {
+  
 }
