@@ -17,6 +17,21 @@ class SkipList : public BST {
 
   SkipList() = default;
 
+  void display() const override {
+
+    for (int level = maxLevel - 1; level >= 0; level--) {
+        cout << "Level " << level << ": ";
+
+        shared_ptr<Node> current = head->nextNode[level];
+        while (current != tail) {
+            cout << current->data << " ";
+            current = current->nextNode[level];
+        }
+
+        cout << '\n';
+    }
+  }
+
   void insert(T value) override {
     int newLevel = randomize();
     shared_ptr<Node> newNode(new Node(value, newLevel));
