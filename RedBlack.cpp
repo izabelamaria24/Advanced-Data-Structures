@@ -1,4 +1,0 @@
-
-class RedBlack : public BST {
-
-}
