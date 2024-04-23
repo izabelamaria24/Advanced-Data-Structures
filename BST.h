@@ -1,3 +1,4 @@
+#include <iostream>
 
 template<typename T>
 class BST {
@@ -8,5 +9,4 @@ class BST {
   virtual void display() const {
     std::cout << "Display BST";
   }
-}
-
+};
