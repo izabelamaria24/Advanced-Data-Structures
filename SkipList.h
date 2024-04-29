@@ -8,20 +8,20 @@
 using namespace std;
 
 template<typename T>
-struct Node {
+struct NodeSkipList {
     T data;
-    map<int, shared_ptr<Node>>nextNode;
+    map<int, shared_ptr<NodeSkipList>>nextNode;
 
-    Node() = default;
-    explicit Node(int data) : data(data){};
+    NodeSkipList() = default;
+    explicit NodeSkipList(int data) : data(data){};
 };
 
 
 template<typename T>
 class SkipList : public Structure<T> {
   private:
-    shared_ptr<Node<T>> head;
-    shared_ptr<Node<T>> tail;
+    shared_ptr<NodeSkipList<T>> head;
+    shared_ptr<NodeSkipList<T>> tail;
     const int maxLevel;
 
     int randomize() {
@@ -38,8 +38,8 @@ class SkipList : public Structure<T> {
 
   public:
   explicit SkipList(int maxL) : maxLevel(maxL){
-      head = make_shared<Node<T>>();
-      tail = make_shared<Node<T>>();
+      head = make_shared<NodeSkipList<T>>();
+      tail = make_shared<NodeSkipList<T>>();
 
       for (int i = 0; i < maxLevel; ++i) {
           head->nextNode[i] = tail;
@@ -51,7 +51,7 @@ class SkipList : public Structure<T> {
     for (int level = maxLevel - 1; level >= 0; level--) {
         cout << "Level " << level << ": ";
 
-        shared_ptr<Node<T>> current = head->nextNode[level];
+        shared_ptr<NodeSkipList<T>> current = head->nextNode[level];
         while (current != tail) {
             cout << current->data << " ";
             current = current->nextNode[level];
@@ -63,10 +63,10 @@ class SkipList : public Structure<T> {
 
   void insert(T value) override {
     int newLevel = randomize();
-    shared_ptr<Node<T>> newNode(new Node<T>(value));
+    shared_ptr<NodeSkipList<T>> newNode(new NodeSkipList<T>(value));
       
       int currentLevel = maxLevel - 1;
-      shared_ptr<Node<T>>currentNode = head;
+      shared_ptr<NodeSkipList<T>>currentNode = head;
 
       while (currentLevel >= 0) {
 
@@ -88,9 +88,9 @@ class SkipList : public Structure<T> {
 
     void remove(T value) override {
         int currentLevel = maxLevel - 1;
-        shared_ptr<Node<T>> currentNode = head;
+        shared_ptr<NodeSkipList<T>> currentNode = head;
 
-        vector<shared_ptr<Node<T>>> prevNodes(maxLevel, nullptr);
+        vector<shared_ptr<NodeSkipList<T>>> prevNodes(maxLevel, nullptr);
 
         while (currentLevel >= 0) {
             while (currentNode->nextNode[currentLevel] != tail && currentNode->nextNode[currentLevel]->data < value) {
@@ -106,7 +106,7 @@ class SkipList : public Structure<T> {
             return;
         }
 
-        shared_ptr<Node<T>> nodeToRemove = currentNode->nextNode[0];
+        shared_ptr<NodeSkipList<T>> nodeToRemove = currentNode->nextNode[0];
         for (int i = 0; i < maxLevel; ++i) {
             if (prevNodes[i] != nullptr && prevNodes[i]->nextNode[i] == nodeToRemove) {
                 prevNodes[i]->nextNode[i] = nodeToRemove->nextNode[i];
@@ -119,7 +119,7 @@ class SkipList : public Structure<T> {
 
     void search(T value) override {
       int currentLevel = maxLevel - 1;
-      shared_ptr<Node<T>> currentNode = head;
+      shared_ptr<NodeSkipList<T>> currentNode = head;
 
       while (currentLevel >= 0) {
           while (currentNode->nextNode[currentLevel] != tail && currentNode->nextNode[currentLevel]->data < value) {
