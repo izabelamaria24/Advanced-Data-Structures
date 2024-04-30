@@ -70,7 +70,7 @@ void runTest(std::ostream& os, const int N, const int maxValue, int algorithm) {
             break;
         }
         case ALGO_SKIPLIST: {
-            SkipList<T> skipList(16);
+            SkipList<T> skipList;
 
             //Insertion
             for (auto& item : data) {
