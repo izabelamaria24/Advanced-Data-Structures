@@ -68,12 +68,12 @@ class SkipList : public Structure<T> {
 
       while (currentLevel >= 0) {
 
-        while (currentNode->nextNode[currentLevel] != tail && currentNode->nextNode[currentLevel] != nullptr && currentNode->nextNode[currentLevel]->data < value) {
+        while (currentNode->nextNode[currentLevel] != nullptr && currentNode->nextNode[currentLevel] != tail && currentNode->nextNode[currentLevel]->data < value) {
           currentNode = currentNode->nextNode[currentLevel];
         }
         
         // check duplicates
-        if (currentNode->nextNode[currentLevel] != tail && currentNode->nextNode[currentLevel] != nullptr && currentNode->nextNode[currentLevel]->data == value) return;
+        if (currentNode->nextNode[currentLevel] != nullptr && currentNode->nextNode[currentLevel] != tail && currentNode->nextNode[currentLevel]->data == value) return;
 
         if (currentLevel <= newLevel) {
           newNode->nextNode[currentLevel] = currentNode->nextNode[currentLevel];
