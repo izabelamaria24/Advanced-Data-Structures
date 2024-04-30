@@ -1,7 +1,7 @@
 #include <map>
-#include <memory>
 #include <random>
 #include <chrono>
+#include <memory>
 
 #include "Structure.h"
 
@@ -30,7 +30,7 @@ class SkipList : public Structure<T> {
 
         int level = 0;
 
-        while (dis(gen) < 0.5 && level < maxLevel)
+        while (dis(gen) < 0.5 && level < maxLevel - 1)
             level++;
 
         return level;
@@ -49,7 +49,6 @@ class SkipList : public Structure<T> {
   void display() const override {
 
     for (int level = maxLevel - 1; level >= 0; level--) {
-        cout << "Level " << level << ": ";
 
         shared_ptr<NodeSkipList<T>> current = head->nextNode[level];
         while (current != tail) {
@@ -57,7 +56,6 @@ class SkipList : public Structure<T> {
             current = current->nextNode[level];
         }
 
-        cout << '\n';
     }
   }
 
@@ -70,12 +68,12 @@ class SkipList : public Structure<T> {
 
       while (currentLevel >= 0) {
 
-        while (currentNode->nextNode[currentLevel] != tail && currentNode->nextNode[currentLevel]->data < value) {
+        while (currentNode->nextNode[currentLevel] != tail && currentNode->nextNode[currentLevel] != nullptr && currentNode->nextNode[currentLevel]->data < value) {
           currentNode = currentNode->nextNode[currentLevel];
         }
         
         // check duplicates
-        if (currentNode->nextNode[currentLevel] != tail && currentNode->nextNode[currentLevel]->data == value) return;
+        if (currentNode->nextNode[currentLevel] != tail && currentNode->nextNode[currentLevel] != nullptr && currentNode->nextNode[currentLevel]->data == value) return;
 
         if (currentLevel <= newLevel) {
           newNode->nextNode[currentLevel] = currentNode->nextNode[currentLevel];
@@ -86,27 +84,25 @@ class SkipList : public Structure<T> {
       }
   }
 
-    void remove(T value) override {
-        int currentLevel = maxLevel - 1;
-        shared_ptr<NodeSkipList<T>> currentNode = head;
+  
+void remove(T value) override {
+    int currentLevel = maxLevel - 1;
+    shared_ptr<NodeSkipList<T>> currentNode = head;
 
-        vector<shared_ptr<NodeSkipList<T>>> prevNodes(maxLevel, nullptr);
+    vector<shared_ptr<NodeSkipList<T>>> prevNodes(maxLevel, nullptr);
 
-        while (currentLevel >= 0) {
-            while (currentNode->nextNode[currentLevel] != tail && currentNode->nextNode[currentLevel]->data < value) {
-                currentNode = currentNode->nextNode[currentLevel];
-            }
-
-            prevNodes[currentLevel] = currentNode;
-            currentLevel--;
+    while (currentLevel >= 0) {
+        while (currentNode->nextNode[currentLevel] != nullptr && currentNode->nextNode[currentLevel] != tail && currentNode->nextNode[currentLevel]->data < value) {
+            currentNode = currentNode->nextNode[currentLevel];
         }
 
-        if (currentNode->nextNode[0] == tail || currentNode->nextNode[0]->data != value) {
-            cout << "Value " << value << " not found in SkipList. Cannot remove." << endl;
-            return;
-        }
+        prevNodes[currentLevel] = currentNode;
+        currentLevel--;
+    }
 
+    if (currentNode->nextNode[0] != nullptr && currentNode->nextNode[0] != tail && currentNode->nextNode[0]->data == value) {
         shared_ptr<NodeSkipList<T>> nodeToRemove = currentNode->nextNode[0];
+        
         for (int i = 0; i < maxLevel; ++i) {
             if (prevNodes[i] != nullptr && prevNodes[i]->nextNode[i] == nodeToRemove) {
                 prevNodes[i]->nextNode[i] = nodeToRemove->nextNode[i];
@@ -114,26 +110,25 @@ class SkipList : public Structure<T> {
         }
 
         nodeToRemove->nextNode.clear();
-        cout << "Value " << value << " removed from SkipList" << endl;
+        
+    } else {
     }
-
+}
+  
     void search(T value) override {
       int currentLevel = maxLevel - 1;
       shared_ptr<NodeSkipList<T>> currentNode = head;
 
       while (currentLevel >= 0) {
-          while (currentNode->nextNode[currentLevel] != tail && currentNode->nextNode[currentLevel]->data < value) {
+          while (currentNode->nextNode[currentLevel] != nullptr && currentNode->nextNode[currentLevel] != tail && currentNode->nextNode[currentLevel]->data < value) {
               currentNode = currentNode->nextNode[currentLevel];
           }
 
-          if (currentNode->nextNode[currentLevel] != tail && currentNode->nextNode[currentLevel]->data == value) {
-              cout << "Value " << value << " found in SkipList" << '\n';
+          if (currentNode->nextNode[currentLevel] != nullptr && currentNode->nextNode[currentLevel] != tail && currentNode->nextNode[currentLevel]->data == value) {
               return;
           }
 
           currentLevel--;
       }
-
-      cout << "Value " << value << " not found in SkipList" << '\n';
   }
 };
