@@ -1,8 +1,8 @@
-#include <map>
+
 #include <random>
 #include <chrono>
 #include <memory>
-
+#include <vector>
 #include "Structure.h"
 
 using namespace std;
@@ -10,10 +10,10 @@ using namespace std;
 template<typename T>
 struct NodeSkipList {
     T data;
-    map<int, shared_ptr<NodeSkipList>>nextNode;
-
+    vector<shared_ptr<NodeSkipList>>nextNode;
     NodeSkipList() = default;
-    explicit NodeSkipList(int data) : data(data){};
+    explicit NodeSkipList(int data, int maxLevel) : data(data), nextNode(maxLevel + 1, nullptr) {}
+
 };
 
 
@@ -22,7 +22,7 @@ class SkipList : public Structure<T> {
   private:
     shared_ptr<NodeSkipList<T>> head;
     shared_ptr<NodeSkipList<T>> tail;
-    const int maxLevel;
+    int maxLevel;
 
     int randomize() {
         std::mt19937 gen(std::chrono::system_clock::now().time_since_epoch().count());
@@ -38,8 +38,8 @@ class SkipList : public Structure<T> {
 
   public:
   explicit SkipList(int maxL) : maxLevel(maxL){
-      head = make_shared<NodeSkipList<T>>();
-      tail = make_shared<NodeSkipList<T>>();
+      head = make_shared<NodeSkipList<T>>(-1, maxL);
+      tail = make_shared<NodeSkipList<T>>(-1, maxL);
 
       for (int i = 0; i < maxLevel; ++i) {
           head->nextNode[i] = tail;
@@ -61,7 +61,7 @@ class SkipList : public Structure<T> {
 
   void insert(T value) override {
     int newLevel = randomize();
-    shared_ptr<NodeSkipList<T>> newNode(new NodeSkipList<T>(value));
+    shared_ptr<NodeSkipList<T>> newNode(new NodeSkipList<T>(value, maxLevel));
       
       int currentLevel = maxLevel - 1;
       shared_ptr<NodeSkipList<T>>currentNode = head;
