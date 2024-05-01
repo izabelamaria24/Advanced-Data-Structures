@@ -10,11 +10,11 @@ class Structure {
   // 3
   virtual void search(T value) = 0;
   // 4
-  virtual void searchMaxValueBefore(T value) {
+  virtual void maxSmallerOrEqual(T value) {
     std::cout << "Search max value less than given value";
   }
   // 5 
-  virtual void searchMinValueAfter(T value) {
+  virtual void minLargerOrEqual(T value) {
     std::cout << "Search min value greater than given value";
   }
   // 6
