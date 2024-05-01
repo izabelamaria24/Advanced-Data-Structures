@@ -1,139 +1,130 @@
-#include <map>
-#include <memory>
-#include <random>
-#include <chrono>
-
 #include "Structure.h"
+#include <random>
 
-using namespace std;
+template <typename t>
+class Skiplist : public Structure<t>{
+private:
+    class Node;
 
-template<typename T>
-struct Node {
-    T data;
-    map<int, shared_ptr<Node>>nextNode;
-
-    Node() = default;
-    explicit Node(int data) : data(data){};
-};
-
-
-template<typename T>
-class SkipList : public Structure<T> {
-  private:
-    shared_ptr<Node<T>> head;
-    shared_ptr<Node<T>> tail;
-    const int maxLevel;
-
-    int randomize() {
-        std::mt19937 gen(std::chrono::system_clock::now().time_since_epoch().count());
-        std::uniform_real_distribution<double> dis(0.0, 1.0);
-
-        int level = 0;
-
-        while (dis(gen) < 0.5 && level < maxLevel)
-            level++;
-
-        return level;
+public:
+    Skiplist() {
+        random_engine.seed(std::random_device()());
+        head = nullptr;
+        this->insert(-inf);
     }
 
-  public:
-  explicit SkipList(int maxL) : maxLevel(maxL){
-      head = make_shared<Node<T>>();
-      tail = make_shared<Node<T>>();
-
-      for (int i = 0; i < maxLevel; ++i) {
-          head->nextNode[i] = tail;
-      }
-    };
-
-  void display() const override {
-
-    for (int level = maxLevel - 1; level >= 0; level--) {
-        cout << "Level " << level << ": ";
-
-        shared_ptr<Node<T>> current = head->nextNode[level];
-        while (current != tail) {
-            cout << current->data << " ";
-            current = current->nextNode[level];
-        }
-
-        cout << '\n';
+    void search(t target) override{
+        if (head == nullptr) return;
+        Node* p = findNode(target);
+        bool found = p->val == target;
     }
-  }
 
-  void insert(T value) override {
-    int newLevel = randomize();
-    shared_ptr<Node<T>> newNode(new Node<T>(value));
-      
-      int currentLevel = maxLevel - 1;
-      shared_ptr<Node<T>>currentNode = head;
-
-      while (currentLevel >= 0) {
-
-        while (currentNode->nextNode[currentLevel] != tail && currentNode->nextNode[currentLevel]->data < value) {
-          currentNode = currentNode->nextNode[currentLevel];
-        }
-        
-        // check duplicates
-        if (currentNode->nextNode[currentLevel] != tail && currentNode->nextNode[currentLevel]->data == value) return;
-
-        if (currentLevel <= newLevel) {
-          newNode->nextNode[currentLevel] = currentNode->nextNode[currentLevel];
-          currentNode->nextNode[currentLevel] = newNode;
-        }
-        
-        currentLevel--;
-      }
-  }
-
-    void remove(T value) override {
-        int currentLevel = maxLevel - 1;
-        shared_ptr<Node<T>> currentNode = head;
-
-        vector<shared_ptr<Node<T>>> prevNodes(maxLevel, nullptr);
-
-        while (currentLevel >= 0) {
-            while (currentNode->nextNode[currentLevel] != tail && currentNode->nextNode[currentLevel]->data < value) {
-                currentNode = currentNode->nextNode[currentLevel];
-            }
-
-            prevNodes[currentLevel] = currentNode;
-            currentLevel--;
-        }
-
-        if (currentNode->nextNode[0] == tail || currentNode->nextNode[0]->data != value) {
-            cout << "Value " << value << " not found in SkipList. Cannot remove." << endl;
+    void insert(t num) override {
+        if (head == nullptr) {
+            head = new Node(num);
+            level = 1;
             return;
         }
 
-        shared_ptr<Node<T>> nodeToRemove = currentNode->nextNode[0];
-        for (int i = 0; i < maxLevel; ++i) {
-            if (prevNodes[i] != nullptr && prevNodes[i]->nextNode[i] == nodeToRemove) {
-                prevNodes[i]->nextNode[i] = nodeToRemove->nextNode[i];
+        Node* p = findNode(num);
+        Node* q = new Node(num);
+        int i = 1;
+        add(p, q);
+        while (coinflip()) {
+            i = i + 1;
+            if (i > level) {
+                level = level + 1;
+                createNewLevel();
             }
+            while (p->up == nullptr) {
+                p = p->prev;
+            }
+            p = p->up;
+            Node* new_q = new Node(num);
+            new_q->bottom = q;
+            q->up = new_q;
+            q = new_q;
+            add(p, q);
         }
-
-        nodeToRemove->nextNode.clear();
-        cout << "Value " << value << " removed from SkipList" << endl;
     }
 
-    void search(T value) override {
-      int currentLevel = maxLevel - 1;
-      shared_ptr<Node<T>> currentNode = head;
+    void remove(t num) override {
+        Node* p = findNode(num);
+        if (p == nullptr || p->val != num) return;
+        while (true) {
+            p->prev->next = p->next;
+            if (p->next != nullptr) p->next->prev = p->prev;
+            if (p->up == nullptr) break;
+            p = p->up;
+            delete p->bottom;
+            p->bottom = nullptr;
+        }
+    }
 
-      while (currentLevel >= 0) {
-          while (currentNode->nextNode[currentLevel] != tail && currentNode->nextNode[currentLevel]->data < value) {
-              currentNode = currentNode->nextNode[currentLevel];
-          }
+private:
+    class Node{
+    public:
 
-          if (currentNode->nextNode[currentLevel] != tail && currentNode->nextNode[currentLevel]->data == value) {
-              cout << "Value " << value << " found in SkipList" << '\n';
-              return;
-          }
+        explicit Node(t _val) {
+            this->val = _val;
+            this->prev = nullptr;
+            this->next = nullptr;
+            this->up = nullptr;
+            this->bottom = nullptr;
+        }
 
-          currentLevel--;
-      }
+        Node(t _val, Node* _prev, Node* _next, Node* _up, Node* _bottom) {
+            this->val = _val;
+            this->prev = _prev;
+            this->next = _next;
+            this->up = _up;
+            this->bottom = _bottom;
+        }
 
-      cout << "Value " << value << " not found in SkipList" << '\n';
-  }
+        Node* prev;
+        Node* next;
+        Node* up;
+        Node* bottom;
+        int val;
+    };
+
+    bool coinflip() {
+        std::uniform_int_distribution<int> dist(0, 1);
+        return dist(random_engine) == 0;
+    }
+
+    Node* findNode(t target) {
+        if (head == nullptr) return nullptr;
+        Node* p = head;
+        while (p->bottom != nullptr) {
+            p = p->bottom;
+            while (p->next != nullptr && target >= p->next->val) {
+                p = p->next;
+            }
+        }
+        while (p->next != nullptr && target >= p->next->val) {
+            p = p->next;
+        }
+        return p;
+    }
+
+    void createNewLevel() {
+        Node* new_topleft = new Node(head->val);
+        new_topleft->bottom = head;
+        head->up = new_topleft;
+        head = new_topleft;
+    }
+
+    void add(Node* a, Node* b) {
+        // insert b after a
+        b->next = a->next;
+        if (a->next != nullptr) a->next->prev = b;
+        a->next = b;
+        b->prev = a;
+    }
+
+    Node* head;
+    int level;
+    const int inf = (1<<30);
+    std::mt19937 random_engine;
 };

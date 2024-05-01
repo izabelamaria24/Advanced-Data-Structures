@@ -134,7 +134,8 @@ private:
             if (node->key < best_so_far)
                 best_so_far = node->key;
             return findMinLargerOrEqualNode(node->left, X, best_so_far);
-        } else {
+        } 
+        else {
             return findMinLargerOrEqualNode(node->right, X, best_so_far);
         }
     }
@@ -150,6 +151,7 @@ private:
             displayinorder(node->right);
             }
         }
+    
     void displaySequenceInRange(shared_ptr<Node<T>> node, T x, T y) {
             if (!node) return;
             
@@ -195,10 +197,12 @@ public:
         return findMinLargerOrEqual(*this, X);
     }
     
-    void displayInOrdine() override{
-        display(root);
-    }
-    void displaySequence(T x, T y) override {
+    void displaySequence(T x, T y){
         displaySequenceInRange(root, x, y);
     }
+    
+    void display() {
+        displayinorder(root);
+    }
+    
 };
