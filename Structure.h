@@ -18,6 +18,9 @@ class Structure {
     std::cout << "Search min value greater than given value";
   }
   // 6
+  virtual void displaySequence(T value1, T value2) const {
+    std::cout << "Display sequence";
+  }
   virtual void display() const {
     std::cout << "Display data structure";
   }
