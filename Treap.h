@@ -86,12 +86,81 @@ private:
         }
         return node;
     }
+   
+    shared_ptr<Node<T>> mergeTreaps(shared_ptr<Node<T>> treap1, shared_ptr<Node<T>> treap2) 
+    {
+        if (!treap1)
+            return treap2;
+        if (!treap2)
+            return treap1;
+
+        if (treap1->priority < treap2->priority) 
+        {
+            treap1->right = mergeTreaps(treap1->right, treap2);
+            return treap1;
+        } 
+        else
+        {
+            treap2->left = mergeTreaps(treap1, treap2->left);
+            return treap2;
+        }
+    }
     
-    void displayInOrder(shared_ptr<Node<T>> node) {
-            if (node) {
-                displayInOrder(node->left);
+    shared_ptr<Node<T>> mergeTreaps(Treap<T>& treap1, Treap<T>& treap2) 
+    {
+        return mergeTreaps(treap1.getRoot(), treap2.getRoot());
+    }
+    T findMaxSmallerOrEqualNode(shared_ptr<Node<T>> node, T X, T best_so_far) {
+        if (!node)
+            return best_so_far;
+        
+        if (node->key <= X) {
+            if (node->key > best_so_far)
+                best_so_far = node->key;
+            return findMaxSmallerOrEqualNode(node->right, X, best_so_far);
+        } else {
+            return findMaxSmallerOrEqualNode(node->left, X, best_so_far);
+        }
+    }
+    T findMaxSmallerOrEqual(Treap<T>& treap, T X) {
+        return findMaxSmallerOrEqualNode(treap.getRoot(), X, numeric_limits<T>::min());
+    }
+    
+    T findMinLargerOrEqualNode(shared_ptr<Node<T>> node, T X, T best_so_far) {
+        if (!node)
+            return best_so_far;
+        
+        if (node->key >= X) {
+            if (node->key < best_so_far)
+                best_so_far = node->key;
+            return findMinLargerOrEqualNode(node->left, X, best_so_far);
+        } else {
+            return findMinLargerOrEqualNode(node->right, X, best_so_far);
+        }
+    }
+    
+    T findMinLargerOrEqual(Treap<T>& treap, T X) {
+        return findMinLargerOrEqualNode(treap.getRoot(), X, numeric_limits<T>::max());
+    }
+    
+    void displayinorder(shared_ptr<Node<T>> node) {
+        if (node) {
+            displayinorder(node->left);
+            cout << "(" << node->key << ", " << node->priority << ") ";
+            displayinorder(node->right);
+            }
+        }
+    void displaySequenceInRange(shared_ptr<Node<T>> node, T x, T y) {
+            if (!node) return;
+            
+            if (node->key >= x && node->key <= y) {
+                displaySequenceInRange(node->left, x, y);
                 cout << "(" << node->key << ", " << node->priority << ") ";
-                displayInOrder(node->right);
+                displaySequenceInRange(node->right, x, y);
+            } else if (node->key < x) {
+                displaySequenceInRange(node->right, x, y);
+            } else {
+                displaySequenceInRange(node->left, x, y);
             }
         }
 
@@ -111,7 +180,25 @@ public:
         root = removeNode(root, key);
     }
     
-    void display() {
-            displayInOrder(root);
+    shared_ptr<Node<T>> getRoot() const { return root; }
+    
+    void reunion(Treap<T>& other) override {
+        root = mergeTreaps(*this, other);
+        other.clear();
+    }
+    
+    T maxSmallerOrEqual(T X) override{
+        return findMaxSmallerOrEqual(*this, X);
+    }
+    
+    T minLargerOrEqual(T X) override{
+        return findMinLargerOrEqual(*this, X);
+    }
+    
+    void displayInOrdine() override{
+        display(root);
+    }
+    void displaySequence(T x, T y) override {
+        displaySequenceInRange(root, x, y);
     }
 };
