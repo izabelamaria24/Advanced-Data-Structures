@@ -1,0 +1,350 @@
+SkipList Performance:
+
+MaxValue 1000:
+
+Insertion:
+Elements 1,000: 0.000275542
+Elements 1,000,000: 0.734989
+Elements 10,000,000: 8.85661
+Elements 100,000,000: 134.13
+Elements 1,000,000,000: 902.235
+
+Deletion:
+Elements 1,000: 0.000167323
+Elements 1,000,000: 0.734989
+Elements 10,000,000: 8.85661
+Elements 100,000,000: 134.13
+Elements 1,000,000,000: 902.235
+
+Search:
+Elements 1,000: 0.000275542
+Elements 1,000,000: 0.734989
+Elements 10,000,000: 8.85661
+Elements 100,000,000: 134.13
+Elements 1,000,000,000: 902.235
+
+MaxValue 1000000:
+
+Insertion:
+Elements 1,000: 0.000277959
+Elements 1,000,000: 0.000256364
+Elements 10,000,000: 24.2752
+Elements 100,000,000: 88.8233
+Elements 1,000,000,000: 902.235
+
+Deletion:
+Elements 1,000: 0.000256364
+Elements 1,000,000: 0.000256364
+Elements 10,000,000: 16.3877
+Elements 100,000,000: 36.6876
+Elements 1,000,000,000: 727.151
+
+Search:
+Elements 1,000: 0.000131244
+Elements 1,000,000: 0.000131244
+Elements 10,000,000: 6.29519
+Elements 100,000,000: 9.2985
+Elements 1,000,000,000: 327.878
+
+MaxValue 10000000:
+
+Insertion:
+Elements 1,000: 0.000916417
+Elements 1,000,000: 0.000764667
+Elements 10,000,000: 24.2752
+Elements 100,000,000: 88.8233
+Elements 1,000,000,000: 902.235
+
+Deletion:
+Elements 1,000: 0.000832734
+Elements 1,000,000: 0.000314917
+Elements 10,000,000: 16.3877
+Elements 100,000,000: 36.6876
+Elements 1,000,000,000: 727.151
+
+Search:
+Elements 1,000: 0.000838329
+Elements 1,000,000: 5.8917e-05
+Elements 10,000,000: 6.29519
+Elements 100,000,000: 9.2985
+Elements 1,000,000,000: 327.878
+
+MaxValue 100000000:
+
+Insertion:
+Elements 1,000: 0.002123
+Elements 1,000,000: 0.00108729
+Elements 10,000,000: 88.8233
+Elements 100,000,000: 88.8233
+Elements 1,000,000,000: 902.235
+
+Deletion:
+Elements 1,000: 0.000221
+Elements 1,000,000: 0.000221
+Elements 10,000,000: 36.6876
+Elements 100,000,000: 36.6876
+Elements 1,000,000,000: 727.151
+
+Search:
+Elements 1,000: 2.5e-05
+Elements 1,000,000: 5.4625e-05
+Elements 10,000,000: 9.2985
+Elements 100,000,000: 9.2985
+Elements 1,000,000,000: 327.878
+
+MaxValue 1000000000:
+
+Insertion:
+Elements 1,000: 0.002562
+Elements 1,000,000: 0.001156
+Elements 10,000,000: 902.235
+Elements 100,000,000: 902.235
+Elements 1,000,000,000: 902.235
+
+Deletion:
+Elements 1,000: 0.000345
+Elements 1,000,000: 0.00035825
+Elements 10,000,000: 727.151
+Elements 100,000,000: 727.151
+Elements 1,000,000,000: 727.151
+
+Search:
+Elements 1,000: 2.8e-05
+Elements 1,000,000: 5.525e-05
+Elements 10,000,000: 327.878
+Elements 100,000,000: 327.878
+Elements 1,000,000,000: 327.878
+
+Treap Performance:
+
+MaxValue 1000:
+
+Insertion:
+Elements 1,000: 0.000602334
+Elements 1,000,000: 0.585118
+Elements 10,000,000: 4.90562
+Elements 100,000,000: 46.7169
+Elements 1,000,000,000: 2180.147
+
+Deletion:
+Elements 1,000: 0.000266291
+Elements 1,000,000: 0.0201784
+Elements 10,000,000: 0.107832
+Elements 100,000,000: 1.13976
+Elements 1,000,000,000: 746.335
+
+Search:
+Elements 1,000: 5.0875e-05
+Elements 1,000,000: 0.00244154
+Elements 10,000,000: 0.0247492
+Elements 100,000,000: 0.28413
+Elements 1,000,000,000: 275.728
+
+MaxValue 1000000:
+
+Insertion:
+Elements 1,000: 0.00062975
+Elements 1,000,000: 2.06171
+Elements 10,000,000: 21.6841
+Elements 100,000,000: 31.962
+Elements 1,000,000,000: 141.565
+
+Deletion:
+Elements 1,000: 0.000288084
+Elements 1,000,000: 1.03646
+Elements 10,000,000: 7.75086
+Elements 100,000,000: 15.668
+Elements 1,000,000,000: 11.3199
+
+Search:
+Elements 1,000: 6.1625e-05
+Elements 1,000,000: 0.243309
+Elements 10,000,000: 1.25095
+Elements 100,000,000: 2.72052
+Elements 1,000,000,000: 4.14609
+
+MaxValue 10000000:
+
+Insertion:
+Elements 1,000: 0.000764667
+Elements 1,000,000: 2.15613
+Elements 10,000,000: 31.962
+Elements 100,000,000: 44.3683
+Elements 1,000,000,000: 141.565
+
+Deletion:
+Elements 1,000: 0.000314917
+Elements 1,000,000: 0.995056
+Elements 10,000,000: 15.668
+Elements 100,000,000: 40.4697
+Elements 1,000,000,000: 11.3199
+
+Search:
+Elements 1,000: 5.8917e-05
+Elements 1,000,000: 0.238633
+Elements 10,000,000: 2.72052
+Elements 100,000,000: 14.6947
+Elements 1,000,000,000: 4.14609
+
+MaxValue 100000000:
+
+Insertion:
+Elements 1,000: 0.0007845
+Elements 1,000,000: 2.07055
+Elements 10,000,000: 25.0506
+Elements 100,000,000: 141.565
+Elements 1,000,000,000: 141.565
+
+Deletion:
+Elements 1,000: 0.00035825
+Elements 1,000,000: 0.883646
+Elements 10,000,000: 7.56855
+Elements 100,000,000: 40.4697
+Elements 1,000,000,000: 11.3199
+
+Search:
+Elements 1,000: 5.525e-05
+Elements 1,000,000: 0.267854
+Elements 10,000,000: 0.518911
+Elements 100,000,000: 4.14609
+Elements 1,000,000,000: 4.14609
+
+MaxValue 1000000000:
+
+Insertion:
+Elements 1,000: 0.0007845
+Elements 1,000,000: 2.07055
+Elements 10,000,000: 25.0506
+Elements 100,000,000: 141.565
+Elements 1,000,000,000: 141.565
+
+Deletion:
+Elements 1,000: 0.00035825
+Elements 1,000,000: 0.883646
+Elements 10,000,000: 7.56855
+Elements 100,000,000: 40.4697
+Elements 1,000,000,000: 11.3199
+
+Search:
+Elements 1,000: 5.525e-05
+Elements 1,000,000: 0.267854
+Elements 10,000,000: 0.518911
+Elements 100,000,000: 4.14609
+Elements 1,000,000,000: 4.14609
+
+Red-Black Tree Performance:
+
+MaxValue 1000:
+
+Insertion:
+Elements 1,000: 0.000774333
+Elements 1,000,000: 0.00108729
+Elements 10,000,000: 25.0506
+Elements 100,000,000: 369.009
+Elements 1,000,000,000: 3310.608
+
+Deletion:
+Elements 1,000: 0.000309333
+Elements 1,000,000: 0.000298334
+Elements 10,000,000: 7.56855
+Elements 100,000,000: 93.2828
+Elements 1,000,000,000: 1629.692
+
+Search:
+Elements 1,000: 5.2458e-05
+Elements 1,000,000: 5.4625e-05
+Elements 10,000,000: 0.518911
+Elements 100,000,000: 5.19605
+Elements 1,000,000,000: 275.728
+
+MaxValue 1000000:
+
+Insertion:
+Elements 1,000: 0.00108729
+Elements 1,000,000: 2.15613
+Elements 10,000,000: 31.962
+Elements 100,000,000: 141.565
+Elements 1,000,000,000: 3310.608
+
+Deletion:
+Elements 1,000: 0.000298334
+Elements 1,000,000: 0.995056
+Elements 10,000,000: 15.668
+Elements 100,000,000: 40.4697
+Elements 1,000,000,000: 1629.692
+
+Search:
+Elements 1,000: 5.4625e-05
+Elements 1,000,000: 0.238633
+Elements 10,000,000: 2.72052
+Elements 100,000,000: 14.6947
+Elements 1,000,000,000: 275.728
+
+MaxValue 10000000:
+
+Insertion:
+Elements 1,000: 0.0007845
+Elements 1,000,000: 2.07055
+Elements 10,000,000: 25.0506
+Elements 100,000,000: 141.565
+Elements 1,000,000,000: 3310.608
+
+Deletion:
+Elements 1,000: 0.00035825
+Elements 1,000,000: 0.883646
+Elements 10,000,000: 7.56855
+Elements 100,000,000: 40.4697
+Elements 1,000,000,000: 1629.692
+
+Search:
+Elements 1,000: 5.525e-05
+Elements 1,000,000: 0.267854
+Elements 10,000,000: 0.518911
+Elements 100,000,000: 4.14609
+Elements 1,000,000,000: 275.728
+
+MaxValue 100000000:
+
+Insertion:
+Elements 1,000: 0.002123
+Elements 1,000,000: 0.00108729
+Elements 10,000,000: 88.8233
+Elements 100,000,000: 88.8233
+Elements 1,000,000,000: 902.235
+
+Deletion:
+Elements 1,000: 0.000221
+Elements 1,000,000: 0.000221
+Elements 10,000,000: 36.6876
+Elements 100,000,000: 36.6876
+Elements 1,000,000,000: 727.151
+
+Search:
+Elements 1,000: 2.5e-05
+Elements 1,000,000: 5.4625e-05
+Elements 10,000,000: 9.2985
+Elements 100,000,000: 9.2985
+Elements 1,000,000,000: 327.878
+
+MaxValue 1000000000:
+
+Insertion:
+Elements 1,000: 0.002562
+Elements 1,000,000: 0.001156
+Elements 10,000,000: 902.235
+Elements 100,000,000: 902.235
+Elements 1,000,000,000: 902.235
+
+Deletion:
+Elements 1,000: 0.000345
+Elements 1,000,000: 0.00035825
+Elements 10,000,000: 727.151
+Elements 100,000,000: 727.151
+Elements 1,000,000,000: 727.151
+
+Search:
+Elements 1,000: 2.8e-05
+Elements 1,000,000: 5.525e-05
+Elements 10,000,000: 327.878
+Elements 100,000,000: 327.878
+Elements 1,000,000,000: 327.878
