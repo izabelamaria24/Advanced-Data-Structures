@@ -1,0 +1,160 @@
+Treap insertion time for 1000 elements with max value 1000: 0.000627583 seconds
+Treap deletion time for 500 elements with max value 1000: 0.000294042 seconds
+Treap search time for 250 elements with max value 1000: 5.8083e-05 seconds
+Red-Black Tree insertion time for 1000 elements with max value 1000: 0.000882334 seconds
+SkipList insertion time for 1000 elements with max value 1000: 0.000968167 seconds
+Red-Black Tree deletion time for 500 elements with max value 1000: 0.000356834 seconds
+SkipList deletion time for 500 elements with max value 1000: 0.000181708 seconds
+Red-Black Tree search time for 250 elements with max value 1000: 5.15e-05 seconds
+SkipList search time for 250 elements with max value 1000: 3.0875e-05 seconds
+Treap insertion time for 1000 elements with max value 1000000: 0.000785667 seconds
+SkipList insertion time for 1000 elements with max value 1000000: 0.0007145 seconds
+SkipList deletion time for 500 elements with max value 1000000: 6.0291e-05 seconds
+Treap deletion time for 500 elements with max value 1000000: 0.000327125 seconds
+SkipList search time for 250 elements with max value 1000000: 2.275e-05 seconds
+Treap search time for 250 elements with max value 1000000: 6.1167e-05 seconds
+Red-Black Tree insertion time for 1000 elements with max value 1000000: 0.00132717 seconds
+Red-Black Tree deletion time for 500 elements with max value 1000000: 0.000291541 seconds
+Red-Black Tree search time for 250 elements with max value 1000000: 5.7209e-05 seconds
+Treap insertion time for 1000 elements with max value 1000000000: 0.000744958 seconds
+Treap deletion time for 500 elements with max value 1000000000: 0.000313875 seconds
+SkipList insertion time for 1000 elements with max value 1000000000: 0.0009345 seconds
+Treap search time for 250 elements with max value 1000000000: 6.1708e-05 seconds
+SkipList deletion time for 500 elements with max value 1000000000: 0.000169042 seconds
+Red-Black Tree insertion time for 1000 elements with max value 1000000000: 0.00169783 seconds
+SkipList search time for 250 elements with max value 1000000000: 6.2583e-05 seconds
+Red-Black Tree deletion time for 500 elements with max value 1000000000: 0.000308542 seconds
+Red-Black Tree search time for 250 elements with max value 1000000000: 5.6e-05 seconds
+Treap insertion time for 1000000 elements with max value 1000: 0.480578 seconds
+SkipList insertion time for 1000000 elements with max value 1000: 0.59719 seconds
+Treap deletion time for 500000 elements with max value 1000: 0.0122397 seconds
+Treap search time for 250000 elements with max value 1000: 0.00242967 seconds
+SkipList deletion time for 500000 elements with max value 1000: 0.236181 seconds
+SkipList search time for 250000 elements with max value 1000: 0.0928789 seconds
+Red-Black Tree insertion time for 1000000 elements with max value 1000: 1.75974 seconds
+Red-Black Tree deletion time for 500000 elements with max value 1000: 0.598024 seconds
+Red-Black Tree search time for 250000 elements with max value 1000: 0.0515277 seconds
+SkipList insertion time for 1000000 elements with max value 1000000: 1.33671 seconds
+Red-Black Tree insertion time for 1000000 elements with max value 1000000: 1.99699 seconds
+Treap insertion time for 1000000 elements with max value 1000000: 2.01502 seconds
+SkipList deletion time for 500000 elements with max value 1000000: 0.716492 seconds
+SkipList search time for 250000 elements with max value 1000000: 0.326627 seconds
+Red-Black Tree deletion time for 500000 elements with max value 1000000: 0.879442 seconds
+Treap deletion time for 500000 elements with max value 1000000: 0.924994 seconds
+Red-Black Tree search time for 250000 elements with max value 1000000: 0.23628 seconds
+Treap search time for 250000 elements with max value 1000000: 0.237404 seconds
+SkipList insertion time for 1000000 elements with max value 1000000000: 1.30371 seconds
+Red-Black Tree insertion time for 1000000 elements with max value 1000000000: 2.0727 seconds
+Treap insertion time for 1000000 elements with max value 1000000000: 2.10818 seconds
+SkipList deletion time for 500000 elements with max value 1000000000: 0.713905 seconds
+SkipList search time for 250000 elements with max value 1000000000: 0.318087 seconds
+Red-Black Tree deletion time for 500000 elements with max value 1000000000: 0.878183 seconds
+Treap deletion time for 500000 elements with max value 1000000000: 0.964936 seconds
+Red-Black Tree search time for 250000 elements with max value 1000000000: 0.268248 seconds
+Treap search time for 250000 elements with max value 1000000000: 0.262369 seconds
+Treap insertion time for 10000000 elements with max value 1000: 4.78736 seconds
+Treap deletion time for 5000000 elements with max value 1000: 0.108351 seconds
+SkipList insertion time for 10000000 elements with max value 1000: 8.68418 seconds
+Treap search time for 2500000 elements with max value 1000: 0.024337 seconds
+SkipList deletion time for 5000000 elements with max value 1000: 4.17903 seconds
+SkipList search time for 2500000 elements with max value 1000: 1.64899 seconds
+Red-Black Tree insertion time for 10000000 elements with max value 1000: 24.9284 seconds
+Red-Black Tree deletion time for 5000000 elements with max value 1000: 7.59709 seconds
+Red-Black Tree search time for 2500000 elements with max value 1000: 0.519289 seconds
+Treap insertion time for 10000000 elements with max value 1000000: 21.0883 seconds
+SkipList insertion time for 10000000 elements with max value 1000000: 23.7537 seconds
+Treap deletion time for 5000000 elements with max value 1000000: 7.89908 seconds
+Red-Black Tree insertion time for 10000000 elements with max value 1000000: 33.3352 seconds
+Treap search time for 2500000 elements with max value 1000000: 1.38247 seconds
+SkipList deletion time for 5000000 elements with max value 1000000: 15.5154 seconds
+SkipList search time for 2500000 elements with max value 1000000: 6.15104 seconds
+Red-Black Tree deletion time for 5000000 elements with max value 1000000: 14.4047 seconds
+Red-Black Tree search time for 2500000 elements with max value 1000000: 2.65128 seconds
+Treap insertion time for 10000000 elements with max value 1000000000: 44.9329 seconds
+SkipList insertion time for 10000000 elements with max value 1000000000: 82.4511 seconds
+Treap deletion time for 5000000 elements with max value 1000000000: 40.3598 seconds
+Treap search time for 2500000 elements with max value 1000000000: 12.7229 seconds
+SkipList deletion time for 5000000 elements with max value 1000000000: 36.361 seconds
+SkipList search time for 2500000 elements with max value 1000000000: 9.6713 seconds
+Red-Black Tree insertion time for 10000000 elements with max value 1000000000: 133.672 seconds
+Red-Black Tree deletion time for 5000000 elements with max value 1000000000: 11.3294 seconds
+Red-Black Tree search time for 2500000 elements with max value 1000000000: 4.14138 seconds
+Treap insertion time for 100000000 elements with max value 1000: 52.4638 seconds
+Treap deletion time for 50000000 elements with max value 1000: 1.12364 seconds
+Treap search time for 25000000 elements with max value 1000: 0.276602 seconds
+SkipList insertion time for 100000000 elements with max value 1000: 141.489 seconds
+SkipList deletion time for 50000000 elements with max value 1000: 74.6852 seconds
+SkipList search time for 25000000 elements with max value 1000: 27.945 seconds
+Red-Black Tree insertion time for 100000000 elements with max value 1000: 374.993 seconds
+Red-Black Tree deletion time for 50000000 elements with max value 1000: 93.9066 seconds
+Red-Black Tree search time for 25000000 elements with max value 1000: 5.17615 seconds
+Running tests for file: CustomTests/data_set_1.txt
+SkipList insertion time for 1000000 elements with max value 999999: 1.6134 seconds
+Red-Black Tree insertion time for 1000000 elements with max value 999999: 2.02581 seconds
+Treap insertion time for 1000000 elements with max value 999999: 2.16489 seconds
+SkipList deletion time for 500000 elements with max value 999999: 0.775221 seconds
+SkipList search time for 250000 elements with max value 999999: 0.352041 seconds
+Red-Black Tree deletion time for 500000 elements with max value 999999: 0.930677 seconds
+Treap deletion time for 500000 elements with max value 999999: 1.03719 seconds
+Red-Black Tree search time for 250000 elements with max value 999999: 0.262439 seconds
+Treap search time for 250000 elements with max value 999999: 0.254364 seconds
+Running tests for file: CustomTests/data_set_2.txt
+SkipList insertion time for 1000000 elements with max value 1000000: 1.29959 seconds
+Red-Black Tree insertion time for 1000000 elements with max value 1000000: 2.03503 seconds
+SkipList deletion time for 500000 elements with max value 1000000: 0.725355 seconds
+Treap insertion time for 1000000 elements with max value 1000000: 2.14758 seconds
+SkipList search time for 250000 elements with max value 1000000: 0.328157 seconds
+Red-Black Tree deletion time for 500000 elements with max value 1000000: 0.872386 seconds
+Treap deletion time for 500000 elements with max value 1000000: 0.984032 seconds
+Red-Black Tree search time for 250000 elements with max value 1000000: 0.259421 seconds
+Treap search time for 250000 elements with max value 1000000: 0.259273 seconds
+Running tests for file: CustomTests/data_set_3.txt
+SkipList insertion time for 1000000 elements with max value 999999: 1.37144 seconds
+Treap insertion time for 1000000 elements with max value 999999: 1.96921 seconds
+Red-Black Tree insertion time for 1000000 elements with max value 999999: 2.06875 seconds
+SkipList deletion time for 500000 elements with max value 999999: 0.748462 seconds
+SkipList search time for 250000 elements with max value 999999: 0.343342 seconds
+Treap deletion time for 500000 elements with max value 999999: 0.917523 seconds
+Red-Black Tree deletion time for 500000 elements with max value 999999: 0.884594 seconds
+Treap search time for 250000 elements with max value 999999: 0.232568 seconds
+Red-Black Tree search time for 250000 elements with max value 999999: 0.242733 seconds
+Running tests for file: CustomTests/data_set_4.txt
+SkipList insertion time for 1000000 elements with max value 999999: 1.43198 seconds
+Treap insertion time for 1000000 elements with max value 999999: 1.9695 seconds
+Red-Black Tree insertion time for 1000000 elements with max value 999999: 2.02748 seconds
+SkipList deletion time for 500000 elements with max value 999999: 0.755512 seconds
+SkipList search time for 250000 elements with max value 999999: 0.347955 seconds
+Treap deletion time for 500000 elements with max value 999999: 0.938626 seconds
+Red-Black Tree deletion time for 500000 elements with max value 999999: 0.916543 seconds
+Treap search time for 250000 elements with max value 999999: 0.245827 seconds
+Red-Black Tree search time for 250000 elements with max value 999999: 0.247323 seconds
+Running tests for file: CustomTests/data_set_5.txt
+SkipList insertion time for 1000000 elements with max value 999997: 1.31795 seconds
+Treap insertion time for 1000000 elements with max value 999997: 1.96156 seconds
+Red-Black Tree insertion time for 1000000 elements with max value 999997: 2.06259 seconds
+SkipList deletion time for 500000 elements with max value 999997: 0.732039 seconds
+SkipList search time for 250000 elements with max value 999997: 0.331327 seconds
+Treap deletion time for 500000 elements with max value 999997: 0.912714 seconds
+Red-Black Tree deletion time for 500000 elements with max value 999997: 0.886679 seconds
+Treap search time for 250000 elements with max value 999997: 0.23893 seconds
+Red-Black Tree search time for 250000 elements with max value 999997: 0.244584 seconds
+Running tests for file: CustomTests/data_set_6.txt
+SkipList insertion time for 1000000 elements with max value 999983: 0.318109 seconds
+Treap insertion time for 1000000 elements with max value 999983: 0.387828 seconds
+SkipList deletion time for 500000 elements with max value 999983: 0.0870657 seconds
+Treap deletion time for 500000 elements with max value 999983: 0.158417 seconds
+SkipList search time for 250000 elements with max value 999983: 0.029855 seconds
+Treap search time for 250000 elements with max value 999983: 0.0386078 seconds
+Red-Black Tree insertion time for 1000000 elements with max value 999983: 1.81407 seconds
+Red-Black Tree deletion time for 500000 elements with max value 999983: 0.545759 seconds
+Red-Black Tree search time for 250000 elements with max value 999983: 0.0153027 seconds
+Running tests for file: CustomTests/data_set_7.txt
+Treap insertion time for 1000000 elements with max value 9886: 0.252891 seconds
+Treap deletion time for 500000 elements with max value 9886: 0.0106277 seconds
+SkipList insertion time for 1000000 elements with max value 9886: 0.394362 seconds
+Treap search time for 250000 elements with max value 9886: 0.00251246 seconds
+SkipList deletion time for 500000 elements with max value 9886: 0.128454 seconds
+SkipList search time for 250000 elements with max value 9886: 0.0358644 seconds
+Red-Black Tree insertion time for 1000000 elements with max value 9886: 1.73882 seconds
+Red-Black Tree deletion time for 500000 elements with max value 9886: 0.58568 seconds
+Red-Black Tree search time for 250000 elements with max value 9886: 0.028205 seconds
