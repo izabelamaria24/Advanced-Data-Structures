@@ -1,7 +1,11 @@
 # Implementation of functions: 
+
 -InsertNode
+
 -SearchNode
+
 -DeleteNode 
+
 for Treaps, SkipLists and RedBlack Trees.
 
 # For Treaps and RedBlack Trees, additional functions:
